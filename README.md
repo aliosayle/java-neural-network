@@ -71,28 +71,27 @@ git clone https://github.com/your-repo/java-neural-network.git
 cd java-neural-network
 ```
 
+### Downloading the MNIST Dataset
+
+To train your network on the MNIST digit dataset, follow these steps to download and place the dataset in your project directory:
+
+1. Download the MNIST dataset from [here](http://yann.lecun.com/exdb/mnist/).
+
 ### Running the Code
 
-You can create an instance of the `NeuralNetwork` class, and train it as follows:
+You can create an instance of the `NeuralNetwork` class and train it as follows:
 ```java
 public class Main {
     public static void main(String[] args) {
-        NeuralNetwork nn = new NeuralNetwork(3, 4, 1); // Example: 3 input nodes, 4 hidden, 1 output
-        double[][] inputs = {
-            {0.0, 0.0, 1.0},
-            {0.0, 1.0, 1.0},
-            {1.0, 0.0, 1.0},
-            {1.0, 1.0, 1.0}
-        };
-        double[][] targets = {
-            {0.0},
-            {1.0},
-            {1.0},
-            {0.0}
-        };
-
+        NeuralNetwork nn = new NeuralNetwork(784, 128, 10); // Example: 784 input nodes (28x28 pixels), 128 hidden, 10 output (digits 0-9)
+        
+        // Load and preprocess the MNIST dataset here
+        
+        double[][] inputs = {};  // Replace with actual MNIST input data
+        double[][] targets = {}; // Replace with actual MNIST target data
+        
         nn.train(inputs, targets, 10000); // Train the network for 10,000 epochs
-        double[] prediction = nn.predict(new double[] {1.0, 0.0, 0.0});
+        double[] prediction = nn.predict(new double[] {}); // Replace with an actual input example
         System.out.println("Prediction: " + Arrays.toString(prediction));
     }
 }
